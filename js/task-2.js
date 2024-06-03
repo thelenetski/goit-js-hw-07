@@ -27,16 +27,14 @@ const images = [
 
 const gallery = document.querySelector(".gallery");
 
+let img = ``;
+
 images.forEach((elem) => {
-  /*gallery.insertAdjacentHTML(`
-  <li>
-    <img src='${elem.url}' alt='${elem.alt}' />
-  </li>
-  `);*/
-  let img = `
+  img += `
   <li>
     <img src='${elem.url}' alt='${elem.alt}' />
   </li>
   `;
-  gallery.insertAdjacentHTML("afterbegin", img);
 });
+
+gallery.insertAdjacentHTML("afterbegin", img);

@@ -26,18 +26,20 @@ function handleSubmit() {
 function createBoxes(amount) {
   destroyBoxes();
   let size = 30;
+  let box = ``;
 
   for (let i = 0; i < amount; i += 1) {
-    let box = document.createElement("div");
-    box.style.width = size + "px";
-    box.style.height = size + "px";
-    box.style.background = getRandomHexColor();
-    boxes.append(box);
+    box += `<div style="
+      width:${size}px;
+      height:${size}px;
+      background:${getRandomHexColor()};
+    "></div>`;
     size += 10;
   }
+
+  boxes.insertAdjacentHTML("afterbegin", box);
 }
 
 function destroyBoxes() {
-  let allBoxes = boxes.querySelectorAll("div");
-  if (allBoxes) allBoxes.forEach((elem) => elem.remove());
+  boxes.innerHTML = "";
 }
